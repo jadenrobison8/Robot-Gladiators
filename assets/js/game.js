@@ -1,23 +1,48 @@
 var playerName = window.prompt("What is your robot's name?");
-console.log(playerName);
+var playerHealth = 100;
+var playerAttack = 10;
 
-console.log("This logs a string, good for leaving yourself a message");
-//this will do math an log 20
-console.log(10+10);
-console.log("our robots name is " + playerName);
+//you can also log multiple values at once like this
+console.log(playerName, playerAttack, playerHealth);
 
-//tony the robot is ready for battle
-console.log("Tony the Robot" + " is ready for battle!");
+var enemyName = "Roborto";
+var enemyHealth = 50;
+var enemyAttack = 12;
 
-//"Tony the robot is ready for battle"
-console.log(playerName + " is ready for battle!");
+var fight = function() {
+    //alert player that they are starting the round
+    window.alert("Welcome to Robot Gladiators!");
 
-//"Your robot, Tony the robot, has won!"
-console.log("Your robot, " + playerName + ", has won!");
+    //subtract the value of 'playerAttack' from the value of 'enemyHealth' and use that result to update the value in the 'enemyHealth' variable
+    enemyHealth = enemyHealth - playerAttack;
 
-// this creates a function named "fight"
-function fight() {
-    window.alert("The fight has begun!");
-}
+    //log a resuling message to the console so we know that it worked.
+    console.log (
+        playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
+    );
 
-//fight();
+    //check enemy health
+    if (enemyHealth <= 0) {
+        window.alert(enemyName + " has died!");
+    }
+    else {
+        window.alert(enemyName + " still has" + enemyHealth + " health left.");
+    }
+
+    console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
+
+    //check players health 
+    if (playerHealth <= 0) {
+        window.alert(playerName + " has died!");
+    }
+    else {
+        window.alert(playerName + " still has " + playerHealth + " health left.");
+    }
+    // subtract the value of 'enemyAttack' from the value of 'playerHealth' and use that result to update the value in the 'playerHealth' value
+
+    // log a resulting message to the console so we know that it worked.
+
+};
+
+// run fight function to start game
+fight();

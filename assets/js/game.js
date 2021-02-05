@@ -134,6 +134,7 @@ var shop = function () {
 
     //use switch to carry out action
     switch (shopOptionPrompt) {
+        case "REFILL":
         case "refill":
             window.alert("Refilling player's health by 20 for 7 dollars.");
 
@@ -141,18 +142,29 @@ var shop = function () {
             playerHealth = playerHealth + 20;
             playerMoney = playerMoney - 7;
             break;
-        case "upgrade":
-            window.alert("Upgrading player's attack by 6 for 7 dollars.");
 
-            //increase attack and decrease money
-            playerAttack = playerAttack + 6;
-            playerMoney = playerMoney - 7;
+        case "UPGRADE":
+        case "upgrade":
+            if (playerMoney >= 7) {
+                window.alert("Upgrading player's attack by 6 for 7 dollars.");
+
+                //increase attack and decrease money
+                playerAttack = playerAttack + 6;
+                playerMoney = playerMoney - 7;
+            
+            } else {
+                window.alert("You don't have enough money!");
+            }
+
             break;
+        
+        case "LEAVE":
         case "leave":
             window.alert("Leaving the Store.");
 
             //do nothing, so function will end
             break;
+
         default:
             window.alert("You did not pick a valid option. Try again.");
 

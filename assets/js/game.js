@@ -68,17 +68,15 @@ var startGame = function() {
     for(var i = 0; i < enemyInfo.length; i++) {
         if (playerInfo.health > 0) {
             window.alert("Welcome to Robot Gladiators! Round " + (i+1));
+
             var pickedEnemyObj = enemyInfo[i];
             pickedEnemyObj.health = randomNumber(40, 60);
-
-            // debugger to pause script
-            //debugger;
 
             // call fight function with enemy-robot
             fight (pickedEnemyObj);
 
             //if were not at the last enemy in the array
-            if (playerInfo.health > 0 && i < enemyNames.length - 1) {
+            if (playerInfo.health > 0 && i < enemyInfo.length - 1) {
                 //ask player if wants to use the store before next round
                 var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
 
@@ -173,10 +171,22 @@ var enemyInfo = [
       name: "Robo Trumble",
       attack: randomNumber(10,14)
     }
-  ];
+];
 
-  var playerInfo = {
-    name: window.prompt("WHat is your robot's name?"),
+// function to set name
+var getPlayerName = function() {
+    var name = "";
+
+    while (name === "" || name === null) {
+        name = prompt("What is your robot's name?");
+    }
+
+    console.log("Your robot's name is " + name);
+    return name; 
+}
+
+var playerInfo = {
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
